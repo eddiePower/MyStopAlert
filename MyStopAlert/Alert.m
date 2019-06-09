@@ -8,7 +8,7 @@
 
 #import "Alert.h"
 
-@interface Alert : NSObject
+@implementation Alert
 
 
 

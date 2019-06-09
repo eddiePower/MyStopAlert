@@ -93,8 +93,8 @@
 				2C70EF5F22A4072400971C44 /* LaunchScreen.storyboard */,
 				2C70EF6222A4072400971C44 /* Info.plist */,
 				2C70EF6322A4072400971C44 /* main.m */,
-				2C827DCC22AD12C600AB6C48 /* Alert.m */,
 				2C827DCE22AD12D700AB6C48 /* Alert.h */,
+				2C827DCC22AD12C600AB6C48 /* Alert.m */,
 			);
 			path = MyStopAlert;
 			sourceTree = "<group>";

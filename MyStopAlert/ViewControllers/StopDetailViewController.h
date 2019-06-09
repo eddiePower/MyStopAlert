@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *txtStopLong;
 @property (strong, nonatomic) IBOutlet UILabel *txtStopLatt;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *detailMapTypeSelector;
+
 //set values from table view vc.
 @property (strong, nonatomic) NSString *stopHeader;
 @property (strong, nonatomic) NSString *stopName;

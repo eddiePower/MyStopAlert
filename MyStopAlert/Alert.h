@@ -11,5 +11,14 @@
 #define Alert_h
 #import <Foundation/Foundation.h>
 
+@interface Alert : NSObject
+
+@property (nonatomic, retain) NSNumber *alarmAlertRadius;
+@property (nonatomic, retain) NSNumber *alarmIsActive;
+@property (nonatomic, retain) NSDate   *alarmTime;
+@property (nonatomic, retain) NSString *alarmTitle;
+@property (nonatomic, retain) NSString *alarmDistance;
+
+@end
 
 #endif /* Alert_h */

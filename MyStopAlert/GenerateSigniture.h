@@ -13,7 +13,7 @@
 //   All rights reserved.
 
 #import <Foundation/Foundation.h>
-#include <CommonCrypto/CommonHMAC.h>
+#import <CommonCrypto/CommonCrypto.h>
 
 @interface GenerateSigniture : NSObject
 
