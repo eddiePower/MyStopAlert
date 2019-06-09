@@ -20,7 +20,7 @@
     // Override point for customization after application launch.
     
     //Assign Google Maps API Key
-    [GMSServices provideAPIKey:@"AIzaSyAbMFjwrhUEjJSlcAk_AmxEDXmF8y4TkNk"];
+    [GMSServices provideAPIKey:@""];
     
     return YES;
 }
