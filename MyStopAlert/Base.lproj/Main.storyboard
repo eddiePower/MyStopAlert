@@ -172,6 +172,9 @@
                                     <segment title="Satelite"/>
                                     <segment title="Hybrid"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlIndexChanged" destination="V6J-Wl-aC7" eventType="valueChanged" id="iZ9-Mu-zzm"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdD-fb-Z3W">
                                 <rect key="frame" x="20" y="183" width="371" height="21"/>
@@ -336,7 +339,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6NR-Ww-Beg"/>
-        <segue reference="VlG-C5-5Zw"/>
+        <segue reference="xLi-2h-ZKV"/>
     </inferredMetricsTieBreakers>
 </document>

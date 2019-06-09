@@ -2,6 +2,12 @@
 //  StopDetailViewController.m
 //  MyStopAlert
 //
+//  Description:
+//  StopDetailViewController is responsible for
+//  displaying the train station (Frankston line only in demo)
+//  to the user, will expand this to show facilities and timetables
+//  and disruptions to service.
+//
 //  Created by Eddie Power on 8/6/19.
 //  Copyright © 2019 Eddie Power. All rights reserved.
 //
@@ -74,27 +80,48 @@ static CGFloat randf() { return (((float)arc4random() / 0x100000000) * 1.0f); }
     
     //assign our map marker to the mapview,
     [self.mapView addSubview: self.statusLabel];
-    [self.view addSubview:self.mapView]; //set the map view as a sub view of our vc
+    [self.view addSubview: self.mapView]; //set the map view as a sub view of our vc
 }
 
-//- (void)mapViewDidStartTileRendering:(GMSMapView *)mapView
-//{
-//    self.statusLabel.alpha = 0.8f;
-//    self.statusLabel.text = @"Rendering";
-//}
-//
-//- (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView
-//{
-//    self.statusLabel.alpha = 0.0f;
-//}
+//Switch google map between Road, Satelite and Hybrid modes.
+-(IBAction) segmentedControlIndexChanged
+{
+    switch (self.detailMapTypeSelector.selectedSegmentIndex)
+    {
+        case 0:
+            self.mapView.mapType = kGMSTypeNormal;
+            break;
+        case 1:
+            self.mapView.mapType = kGMSTypeSatellite;
+            break;
+        case 2:
+            self.mapView.mapType = kGMSTypeHybrid;
+            break;
+        default:
+            break;
+    }
+    
+}
+
+- (void)mapViewDidStartTileRendering:(GMSMapView *)mapView
+{
+    self.statusLabel.alpha = 0.8f;
+    self.statusLabel.text = @"Rendering";
+}
+
+- (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView
+{
+    self.statusLabel.alpha = 0.0f;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self.mapView
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applicationWillEnterForeground)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
+                                             name:UIApplicationWillEnterForegroundNotification
+                                             object:nil];
+    
     [self.mapView clear];
     [self addDefaultMarker];
 }
@@ -108,7 +135,7 @@ static CGFloat randf() { return (((float)arc4random() / 0x100000000) * 1.0f); }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoContents:(GMSMarker *)marker
@@ -117,7 +144,8 @@ static CGFloat randf() { return (((float)arc4random() / 0x100000000) * 1.0f); }
     self.infoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
     UIView *infoView = self.infoView;
     marker.tracksInfoWindowChanges = YES;
-    UIColor *color = [UIColor colorWithHue:randf() saturation:1.f brightness:1.f alpha:1.0f];
+    //pick a random highlight colour
+    UIColor *color = [UIColor colorWithHue: randf() saturation:1.f brightness:1.f alpha:1.0f];
     self.infoView.backgroundColor = [UIColor clearColor];
     [UIView animateWithDuration:1.0
                           delay:1.0
@@ -131,9 +159,11 @@ static CGFloat randf() { return (((float)arc4random() / 0x100000000) * 1.0f); }
                                                delay:0.0
                                              options:UIViewAnimationOptionCurveLinear
                                           animations:^{
-                                              infoView.backgroundColor = [UIColor clearColor];
+                                              self.infoView.backgroundColor = [UIColor clearColor];
+                                              
                                           }
-                                          completion:^(BOOL finished2) {
+                                          completion:^(BOOL finished2)
+                                          {
                                               marker.tracksInfoWindowChanges = NO;
                                           }];
                      }];
@@ -143,7 +173,7 @@ static CGFloat randf() { return (((float)arc4random() / 0x100000000) * 1.0f); }
 
 - (void)mapView:(GMSMapView *)mapView didCloseInfoWindowOfMarker:(GMSMarker *)marker
 {
-    self.infoView = nil;
+//    self.infoView = nil;
     marker.tracksInfoWindowChanges = NO;
 }
 
@@ -151,7 +181,8 @@ static CGFloat randf() { return (((float)arc4random() / 0x100000000) * 1.0f); }
 {
     // Add a custom 'glow' marker with a pulsing blue shadow on the stop requested.
     GMSMarker *stopMarker = [[GMSMarker alloc] init];
-    stopMarker.title = [NSString stringWithFormat:@"%@\n%@\nFacilities: Stuff", self.stopName, self.stopSuburb];
+    stopMarker.title = stopHeader;
+    stopMarker.snippet = [NSString stringWithFormat:@"%@\n%@\nFacilities: Stuff", self.stopName, self.stopSuburb];
     stopMarker.iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glow-marker"]];
     stopMarker.position = CLLocationCoordinate2DMake([self.stopLatt doubleValue], [self.stopLong doubleValue]);
     stopMarker.iconView.contentMode = UIViewContentModeCenter;

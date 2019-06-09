@@ -11,11 +11,12 @@
 		2C70EF5622A4072200971C44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C70EF5522A4072200971C44 /* AppDelegate.m */; };
 		2C70EF5922A4072200971C44 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C70EF5822A4072200971C44 /* ViewController.m */; };
 		2C70EF5C22A4072200971C44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C70EF5A22A4072200971C44 /* Main.storyboard */; };
-		2C70EF5E22A4072400971C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C70EF5D22A4072400971C44 /* Assets.xcassets */; };
 		2C70EF6122A4072400971C44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C70EF5F22A4072400971C44 /* LaunchScreen.storyboard */; };
 		2C70EF6422A4072400971C44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C70EF6322A4072400971C44 /* main.m */; };
 		2C70EF6C22A41D4A00971C44 /* GenerateSigniture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C70EF6B22A41D4A00971C44 /* GenerateSigniture.m */; };
 		2C72135622AAC1B40064BAC7 /* StationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C72135522AAC1B40064BAC7 /* StationTableViewCell.m */; };
+		2C827DC822AD0AD700AB6C48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C827DC722AD0AD700AB6C48 /* Assets.xcassets */; };
+		2C827DCD22AD12C600AB6C48 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C827DCC22AD12C600AB6C48 /* Alert.m */; };
 		2C8827C322ABDAD900F78CAF /* StopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8827C222ABDAD900F78CAF /* StopDetailViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +27,6 @@
 		2C70EF5722A4072200971C44 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2C70EF5822A4072200971C44 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2C70EF5B22A4072200971C44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2C70EF5D22A4072400971C44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C70EF6022A4072400971C44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C70EF6222A4072400971C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C70EF6322A4072400971C44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -39,6 +39,9 @@
 		2C72135922ABD4B80064BAC7 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
 		2C72136022ABD5640064BAC7 /* MyStopAlert */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MyStopAlert; sourceTree = SOURCE_ROOT; };
 		2C72136522ABD64B0064BAC7 /* GoogleMapsM4B.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsM4B.framework; path = "../../../GoogleMaps-3.1.0/M4B/Frameworks/GoogleMapsM4B.framework"; sourceTree = "<group>"; };
+		2C827DC722AD0AD700AB6C48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C827DCC22AD12C600AB6C48 /* Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		2C827DCE22AD12D700AB6C48 /* Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		2C8827C122ABDAD900F78CAF /* StopDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StopDetailViewController.h; sourceTree = "<group>"; };
 		2C8827C222ABDAD900F78CAF /* StopDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StopDetailViewController.m; sourceTree = "<group>"; };
 		3F2DCFC16CF0176D002CA020 /* Pods-MyStopAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyStopAlert.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyStopAlert/Pods-MyStopAlert.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,13 +86,15 @@
 				2C72135E22ABD4D60064BAC7 /* ViewControllers */,
 				2C70EF6A22A41D4A00971C44 /* GenerateSigniture.h */,
 				2C70EF6B22A41D4A00971C44 /* GenerateSigniture.m */,
+				2C827DC722AD0AD700AB6C48 /* Assets.xcassets */,
 				2C70EF5422A4072200971C44 /* AppDelegate.h */,
 				2C70EF5522A4072200971C44 /* AppDelegate.m */,
 				2C70EF5A22A4072200971C44 /* Main.storyboard */,
-				2C70EF5D22A4072400971C44 /* Assets.xcassets */,
 				2C70EF5F22A4072400971C44 /* LaunchScreen.storyboard */,
 				2C70EF6222A4072400971C44 /* Info.plist */,
 				2C70EF6322A4072400971C44 /* main.m */,
+				2C827DCC22AD12C600AB6C48 /* Alert.m */,
+				2C827DCE22AD12D700AB6C48 /* Alert.h */,
 			);
 			path = MyStopAlert;
 			sourceTree = "<group>";
@@ -196,7 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C70EF6122A4072400971C44 /* LaunchScreen.storyboard in Resources */,
-				2C70EF5E22A4072400971C44 /* Assets.xcassets in Resources */,
+				2C827DC822AD0AD700AB6C48 /* Assets.xcassets in Resources */,
 				2C70EF5C22A4072200971C44 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +258,7 @@
 				2C8827C322ABDAD900F78CAF /* StopDetailViewController.m in Sources */,
 				2C70EF6422A4072400971C44 /* main.m in Sources */,
 				2C70EF5622A4072200971C44 /* AppDelegate.m in Sources */,
+				2C827DCD22AD12C600AB6C48 /* Alert.m in Sources */,
 				2C70EF6C22A41D4A00971C44 /* GenerateSigniture.m in Sources */,
 				2C72135622AAC1B40064BAC7 /* StationTableViewCell.m in Sources */,
 			);
