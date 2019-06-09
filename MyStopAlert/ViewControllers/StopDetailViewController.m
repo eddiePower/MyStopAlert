@@ -114,11 +114,11 @@ static CGFloat randf() { return (((float)arc4random() / 0x100000000) * 1.0f); }
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoContents:(GMSMarker *)marker
 {
     // Show an info window with dynamic content - a simple background color animation.
-    _infoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
+    self.infoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
     UIView *infoView = self.infoView;
     marker.tracksInfoWindowChanges = YES;
     UIColor *color = [UIColor colorWithHue:randf() saturation:1.f brightness:1.f alpha:1.0f];
-    _infoView.backgroundColor = [UIColor clearColor];
+    self.infoView.backgroundColor = [UIColor clearColor];
     [UIView animateWithDuration:1.0
                           delay:1.0
                         options:UIViewAnimationOptionCurveLinear
@@ -143,45 +143,45 @@ static CGFloat randf() { return (((float)arc4random() / 0x100000000) * 1.0f); }
 
 - (void)mapView:(GMSMapView *)mapView didCloseInfoWindowOfMarker:(GMSMarker *)marker
 {
-    _infoView = nil;
+    self.infoView = nil;
     marker.tracksInfoWindowChanges = NO;
 }
 
 - (void)addDefaultMarker
 {
-    // Add a custom 'glow' marker with a pulsing blue shadow on Sydney.
-    GMSMarker *sydneyMarker = [[GMSMarker alloc] init];
-    sydneyMarker.title = self.stopName;
-    sydneyMarker.iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glow-marker"]];
-    sydneyMarker.position = CLLocationCoordinate2DMake([self.stopLatt doubleValue], [self.stopLong doubleValue]);
-    sydneyMarker.iconView.contentMode = UIViewContentModeCenter;
-    CGRect oldBound = sydneyMarker.iconView.bounds;
+    // Add a custom 'glow' marker with a pulsing blue shadow on the stop requested.
+    GMSMarker *stopMarker = [[GMSMarker alloc] init];
+    stopMarker.title = [NSString stringWithFormat:@"%@\n%@\nFacilities: Stuff", self.stopName, self.stopSuburb];
+    stopMarker.iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glow-marker"]];
+    stopMarker.position = CLLocationCoordinate2DMake([self.stopLatt doubleValue], [self.stopLong doubleValue]);
+    stopMarker.iconView.contentMode = UIViewContentModeCenter;
+    CGRect oldBound = stopMarker.iconView.bounds;
     CGRect bound = oldBound;
     bound.size.width *= 2;
     bound.size.height *= 2;
-    sydneyMarker.iconView.bounds = bound;
-    sydneyMarker.groundAnchor = CGPointMake(0.5, 0.75);
-    sydneyMarker.infoWindowAnchor = CGPointMake(0.5, 0.25);
-    UIView *sydneyGlow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glow-marker"]];
-    sydneyGlow.layer.shadowColor = [UIColor blueColor].CGColor;
-    sydneyGlow.layer.shadowOffset = CGSizeZero;
-    sydneyGlow.layer.shadowRadius = 8.0;
-    sydneyGlow.layer.shadowOpacity = 1.0;
-    sydneyGlow.layer.opacity = 0.0;
-    [sydneyMarker.iconView addSubview:sydneyGlow];
-    sydneyGlow.center = CGPointMake(oldBound.size.width, oldBound.size.height);
-    sydneyMarker.map = self.mapView;
+    stopMarker.iconView.bounds = bound;
+    stopMarker.groundAnchor = CGPointMake(0.5, 0.75);
+    stopMarker.infoWindowAnchor = CGPointMake(0.5, 0.25);
+    UIView *stopGlow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"glow-marker"]];
+    stopGlow.layer.shadowColor = [UIColor blueColor].CGColor;
+    stopGlow.layer.shadowOffset = CGSizeZero;
+    stopGlow.layer.shadowRadius = 8.0;
+    stopGlow.layer.shadowOpacity = 1.0;
+    stopGlow.layer.opacity = 0.0;
+    [stopMarker.iconView addSubview: stopGlow];
+    stopGlow.center = CGPointMake(oldBound.size.width, oldBound.size.height);
+    stopMarker.map = self.mapView;
     [UIView animateWithDuration:1.0
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewKeyframeAnimationOptionAutoreverse |
      UIViewKeyframeAnimationOptionRepeat
                      animations:^{
-                         sydneyGlow.layer.opacity = 1.0;
+                         stopGlow.layer.opacity = 1.0;
                      }
                      completion:^(BOOL finished)
     {
                          // If the animation is ever terminated, no need to keep tracking the view for changes.
-                         sydneyMarker.tracksViewChanges = NO;
+                         stopMarker.tracksViewChanges = NO;
                      }];
 }
 
